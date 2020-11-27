@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  scheduler:
+    image: php-fpm
+    restart: unless-stopped
+    container_name: laravel-scheduler
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./:/var/www
+    environment:
+      CONTAINER_ROLE: scheduler
+
+  queue-default:
+    image: php-fpm
+    restart: unless-stopped
+    container_name: queue-default
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./:/var/www
+    environment:
+      CONTAINER_ROLE: queue-default

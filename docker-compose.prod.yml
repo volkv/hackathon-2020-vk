@@ -1,0 +1,65 @@
+version: "3"
+
+services:
+
+  php-fpm:
+    image: php-fpm
+    container_name: laravel
+    build: ./docker/php-fpm
+    volumes:
+      - ./:/var/www
+    environment:
+      CONTAINER_ROLE: app
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: prod/Dockerfile
+    container_name: nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - 443:443
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password --innodb_buffer_pool_size=8G --innodb_buffer_pool_instances=8
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 127.0.0.1:3306:3306
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elastic:/usr/share/elasticsearch/data
+
+  redis:
+    image: redis:latest
+    container_name: redis
+
+volumes:
+  elastic:
+    driver: local
+  mysql:
+    driver: local
