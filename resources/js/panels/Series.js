@@ -20,9 +20,9 @@ const Series = ({ id, go }) => (
         >
             Матчи
         </PanelHeader>
-        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle"/>
-        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle" />
-        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle" />
+        <MatchItem match={{team_1: 'NAVI', team_2: "VP"}} href={go} dataTo="seriesSingle"/>
+        <MatchItem match={{team_1: 'NAVI', team_2: "VP"}} href={go} dataTo="seriesSingle" />
+        <MatchItem match={{team_1: 'NAVI', team_2: "VP"}} href={go} dataTo="seriesSingle" />
     </Panel>
 );
 

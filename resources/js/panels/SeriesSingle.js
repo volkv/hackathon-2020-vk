@@ -17,6 +17,7 @@ const SeriesSingle = props => (
                 {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
             </PanelHeaderButton>}
         >
+            Матч
         </PanelHeader>
         <SeriesHeader team_1='NAVI' team_2='VP' />
     </Panel>
