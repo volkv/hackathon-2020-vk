@@ -1,0 +1,26 @@
+.series__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.series__item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.team__logo {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    left: 0;
+    border: .5px solid rgba(0,0,0,.08);
+}
+
+.team__image {
+    border-radius: 50%;
+    padding-top: 100%;
+    background: url("https://object2.vk-apps.com/hs-sport-cece77f1-4bb0-4902-ad1b-bc56c643d80a/media/494/conversions/5fa1c8602a570-x2.jpg") center center / cover no-repeat rgb(249, 249, 249)
+}
