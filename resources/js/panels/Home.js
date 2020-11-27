@@ -26,10 +26,6 @@ const Home = ({ id, go, fetchedUser }) => (
 				<Button size="xl" level="2" onClick={go} data-to="series">
 					К матчам
 				</Button>
-
-                <Button size="xl" level="2" onClick={go} data-to="ne-persik">
-					Show me the NePersik, please
-				</Button>
 			</Div>
 		</Group>
 	</Panel>
