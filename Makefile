@@ -10,7 +10,7 @@ docker-down:
 docker-build:
 	docker-compose up --build -d
 
-install: perm
+install:
 	make docker-up
 	make composer-install
 	make npm-install
