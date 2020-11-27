@@ -4,7 +4,7 @@ services:
 
   php-fpm:
     image: php-fpm
-    container_name: laravel
+    container_name: vk-hack-laravel
     build: ./docker/php-fpm
     volumes:
       - ./:/var/www
@@ -15,7 +15,7 @@ services:
     build:
       context: ./docker/nginx
       dockerfile: prod/Dockerfile
-    container_name: nginx
+    container_name: vk-hack-nginx
     depends_on:
       - php-fpm
     ports:
@@ -25,23 +25,21 @@ services:
       - ./docker/nginx/ssl:/etc/nginx/ssl
 
   mysql:
-    image: mysql:8
-    container_name: mysql
+    image: postgres:latest
+    container_name: vk-hack-sql
     restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password --innodb_buffer_pool_size=8G --innodb_buffer_pool_instances=8
     volumes:
       - mysql:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USERNAME}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - 127.0.0.1:3306:3306
+      - 54321:5432
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
-    container_name: elasticsearch
+    container_name: vk-hack-elasticsearch
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -56,7 +54,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: redis
+    container_name: vk-hack-redis
 
 volumes:
   elastic:
