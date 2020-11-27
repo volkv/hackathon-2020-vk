@@ -8,7 +8,6 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
 import MatchItem from "../components/MatchItem";
-import Button from "@vkontakte/vkui/dist/components/Button/Button";
 
 const osName = platform();
 
@@ -21,9 +20,9 @@ const Series = ({ id, go }) => (
         >
             Матчи
         </PanelHeader>
-        <MatchItem team_1={'NAVI'} team_2={"VP"} onClick={go} data-to="seriesSingle"/>
-        <MatchItem team_1={'NAVI'} team_2={"VP"} />
-        <MatchItem team_1={'NAVI'} team_2={"VP"} />
+        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle"/>
+        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle" />
+        <MatchItem team_1={'NAVI'} team_2={"VP"} href={go} dataTo="seriesSingle" />
     </Panel>
 );
 
