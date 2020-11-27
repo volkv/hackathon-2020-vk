@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {Epic, Root, Tabbar, TabbarItem, View} from '@vkontakte/vkui';
+import {Epic, Root, Tabbar, TabbarItem, View, Panel} from '@vkontakte/vkui';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Series from "./panels/Series";
-import SeriesSingle from "./panels/SeriesSingle";
+import Matches from "./panels/Matches";
+import Match from "./panels/Match";
 import {Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
 
+export const RouterContext = React.createContext({
+    panel: 'home',
+    story: 'matches',
+    view: 'view',
+    go: null,
+});
+
 const App = () => {
-    const [activePanel, setActivePanel] = useState('home');
     const [activeStory, setActiveStory] = useState('matches');
     const [activeView, setActiveView] = useState('view');
+    const [activePanel, setActivePanel] = useState('matches');
     const [fetchedUser, setUser] = useState(null);
 
     useEffect(() => {
@@ -38,35 +45,38 @@ const App = () => {
 
 
     const onStoryChange = e => {
-        console.log(e.currentTarget.dataset.story)
         setActiveStory(e.currentTarget.dataset.story);
     }
 
+    const value = {panel: activePanel, story: activeStory, view: activeView, go: go};
+
     return (
-        <Epic  activeStory={activeStory} tabbar={
-            <Tabbar>
-                <TabbarItem
-                    onClick={onStoryChange}
-                    selected={() => setActiveView('matches')}
-                    data-story="matches"
-                    text="Новости"
-                ><Icon28NewsfeedOutline/></TabbarItem>
-                <TabbarItem
-                    onClick={onStoryChange}
-                    selected={() => setActiveView('view1')}
-                    data-story="view1"
-                    text="Сервисы"
-                ><Icon28ServicesOutline/></TabbarItem>
-            </Tabbar>
-        }>
-            <View id="matches" activePanel='series'>
-                <Series id='series' go={go}/>
-                <SeriesSingle id='seriesSingle' go={go}/>
-            </View>
-            <View id='view1' activePanel='home'>
-                <Home id='home' fetchedUser={fetchedUser} go={go}/>
-            </View>
-        </Epic>
+        <RouterContext.Provider value={value}>
+            <Epic activeStory={activeStory} tabbar={
+                <Tabbar>
+                    <TabbarItem
+                        onClick={onStoryChange}
+                        selected={() => setActiveView('matches')}
+                        data-story="matches"
+                        text="Новости"
+                    ><Icon28NewsfeedOutline/></TabbarItem>
+                    <TabbarItem
+                        onClick={onStoryChange}
+                        selected={() => setActiveView('view1')}
+                        data-story="view1"
+                        text="Сервисы"
+                    ><Icon28ServicesOutline/></TabbarItem>
+                </Tabbar>
+            }>
+                <View id="matches" activePanel={activePanel}>
+                    <Matches id="matches" />
+                    <Match id='match'/>
+                </View>
+                <View id='match' activePanel='home'>
+                    <Home id='home' fetchedUser={fetchedUser} />
+                </View>
+            </Epic>
+        </RouterContext.Provider>
     );
 }
 

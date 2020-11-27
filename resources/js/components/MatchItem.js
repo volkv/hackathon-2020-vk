@@ -5,24 +5,27 @@ import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import '../../css/Series.css'
 import TeamLogo from "./TeamLogo";
 
-const MatchItem = ({ match, href, dataTo }) => (
+const Match = ({ match, href, dataTo }) => (
     <Div onClick={href} data-to={dataTo}>
         <div className="series__row">
             <TeamLogo/>
-            <TeamLogo/>
             <div className="series__item">
-                <div>{match.team_1} - {match.team_2}</div>
-                <div>Сегодня в 22:00</div>
+                <div> <TeamLogo/>{match.team_1}  </div>
+                -
+                <div> <TeamLogo/>{match.team_2}</div>
+            </div>
+            <div>
+                {match.team1_score} - {match.team2_score}
             </div>
         </div>
     </Div>
 );
 
-MatchItem.propTypes = {
+Match.propTypes = {
     dataTo: PropTypes.string.isRequired,
     href: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
 };
 
-export default MatchItem;
+export default Match;
 
