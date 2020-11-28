@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-const MatchStats = ({stats}) => {
+const MatchStats = () => {
 
     return (
         <Div>
-            {stats.stats}
+            <Div className='match__stats'>
+                <img src='/media/stats.png'/>
+            </Div>
         </Div>
     )
-};
-
-MatchStats.propTypes = {
-    stats: PropTypes.object.isRequired,
 };
 
 export default MatchStats;

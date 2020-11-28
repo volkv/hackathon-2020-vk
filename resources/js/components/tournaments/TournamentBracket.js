@@ -4,8 +4,8 @@ import Div from "@vkontakte/vkui/dist/components/Div/Div";
 const TournamentBracket = () => {
 
     return (
-        <Div>
-            Турнирная сетка
+        <Div className='tournament__bracket'>
+            <img src='/media/bracket.png'/>
         </Div>
     )
 };
