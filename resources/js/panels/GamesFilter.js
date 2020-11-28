@@ -1,15 +1,11 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
-import {List, Cell, PanelHeaderButton, IOS, platform} from '@vkontakte/vkui';
+import {List, Cell} from '@vkontakte/vkui';
 import {Panel, PanelHeader} from '@vkontakte/vkui';
 import {RouterContext, games} from '../App';
 import Group from "@vkontakte/vkui/dist/components/Group/Group";
-import DotaIcon from '../../../public/media/games/1.svg';
-import LolIcon from '../../../public/media/games/2.svg';
-import CSIcon from '../../../public/media/games/5.svg';
-import {Icon24Back, Icon28ChevronBack} from "@vkontakte/icons";
+import BackButton from "../components/BackButton";
 
-const osName = platform();
 
 const GameList = ({go, setGame}) => {
     const onClick = id => e => {
@@ -22,7 +18,7 @@ const GameList = ({go, setGame}) => {
 
         return (
             <Cell
-                before={<img width={24} height={24} src={icon} />}
+                before={<img width={24} height={24} src={icon} alt='game-icon'/>}
                 onClick={onClick(id)}
                 data-to='matches'
                 asideContent={value}
@@ -37,15 +33,9 @@ const GameList = ({go, setGame}) => {
 const Match = ({id}) => {
     const {go, setGame} = useContext(RouterContext);
 
-    const BackBtn = () => (
-        <PanelHeaderButton onClick={go} data-to="matches">
-            {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-        </PanelHeaderButton>
-    );
-
     return (
         <Panel id={id}>
-            <PanelHeader left={<BackBtn/>}>
+            <PanelHeader left={<BackButton go={go} dataTo="matches"/>}>
                 Выбор игры
             </PanelHeader>
             <Group>
