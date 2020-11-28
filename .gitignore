@@ -14,3 +14,4 @@ yarn-error.log
 composer.lock
 .env
 .bash_history
+public/mix-manifest.json
