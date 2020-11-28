@@ -71,6 +71,8 @@ const App = () => {
 
     const onStoryChange = e => {
         setActiveStory(e.currentTarget.dataset.story);
+        setActiveView(e.currentTarget.dataset.story);
+        setActivePanel(e.currentTarget.dataset.story);
     };
 
     const value = {panel: activePanel, story: activeStory, view: activeView, go, setGame, game, match, setMatch, date, setDate, chosen, setChosen};
@@ -81,13 +83,13 @@ const App = () => {
                 <Tabbar>
                     <TabbarItem
                         onClick={onStoryChange}
-                        selected={() => setActiveView('matches')}
+                        selected={activeView === 'matches'}
                         data-story="matches"
                         text="Матчи"
                     ><Icon28NewsfeedOutline/></TabbarItem>
                     <TabbarItem
                         onClick={onStoryChange}
-                        selected={() => setActiveView('tournaments')}
+                        selected={activeView === 'tournaments'}
                         data-story="tournaments"
                         text="Турниры"
                     ><Icon28ServicesOutline/></TabbarItem>
@@ -98,7 +100,7 @@ const App = () => {
                     <Match id='match'/>
                     <GamesFilter id="gamesFilter" />
                 </View>
-                <View id='tournaments' activePanel='tournaments'>
+                <View id='tournaments' activePanel={activePanel}>
                     <Tournaments id='tournaments' />
                     <Tournament id='tournament' />
                 </View>

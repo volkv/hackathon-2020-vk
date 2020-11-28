@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {platform, IOS, FixedLayout, Separator, Tabs, TabsItem, TabbarItem} from '@vkontakte/vkui';
 import {Panel, PanelHeader, PanelHeaderButton} from '@vkontakte/vkui';
 import {Icon28ChevronBack, Icon24Back} from '@vkontakte/icons';
+import {RouterContext} from '../../App';
 
 const osName = platform();
 
