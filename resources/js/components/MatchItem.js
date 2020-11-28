@@ -13,7 +13,7 @@ const Match = ({match, href, dataTo}) => (
             </div>
             <div className="match__teams">
                 <div className="match__team">
-                    <TeamLogo/>
+                    <TeamLogo background={"https://lurkmore.so/images/thumb/b/b1/Dota2logo.png/200px-Dota2logo.png"}/>
                     <div>
                         {match.team_1}
                     </div>
