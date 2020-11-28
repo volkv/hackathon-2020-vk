@@ -2,29 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-import '../../../css/Series.css'
+import '../../../css/match.css'
 
 const MatchHeader = props => {
 
     return (
         <Div>
-            <div className="match__header">
-                <div className="match__header-tournament">ESL 2020</div>
-            </div>
-            <div>
-                <div>
-                    {/*logo*/}
-                    <div>
-                        {props.team_1}
+            <div className="match-header">
+                <div className="match-header__top">
+                    <div className="match-header__tournament">ESL 2020</div>
+                    <div className="match-header__date">20.02 в 14:00</div>
+                </div>
+                <div className="match-header__teams">
+                    <div className="match-header__score">
+                        - : -
                     </div>
-                </div>
-                <div>
-                    2 : 1
-                </div>
-                <div>
-                    {/*logo*/}
-                    <div>
-                        {props.team_2}
+                    <div className="match-header__team">
+                        <div className="match-header__team-logo"></div>
+                        <div className="match-header__team-name">{props.team_1}</div>
+                    </div>
+                    <div className="match-header__team">
+                        <div className="match-header__team-logo"></div>
+                        <div className="match-header__team-name">{props.team_2}</div>
                     </div>
                 </div>
             </div>

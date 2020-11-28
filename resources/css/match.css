@@ -1,0 +1,32 @@
+.match-header {
+    padding: 25px 16px 28px;
+    position: relative;
+}
+
+.match-header__teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.match-header__top {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.match-header__team-name {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.match-header__score {
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    pointer-events: none;
+}

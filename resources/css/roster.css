@@ -1,0 +1,8 @@
+.roster__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.roster__list-item:not(:last-child) {
+    margin-bottom: 8px;
+}
