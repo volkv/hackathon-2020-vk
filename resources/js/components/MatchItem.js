@@ -21,7 +21,7 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
     if(days === 0){
         timeCaption = `сегодня в ${time.toFormat('HH:mm')}`;
     } else {
-        timeCaption = time.toLocaleString(({ weekday: 'long', month: 'long', day: '2-digit' }));
+        timeCaption = time.setLocale('ru').toLocaleString(({ weekday: 'long', month: 'long', day: '2-digit' }));
     }
     return (
         <Div onClick={onClick} data-to="match" className="match__row">
