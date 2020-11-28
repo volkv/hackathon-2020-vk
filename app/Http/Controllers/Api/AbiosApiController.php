@@ -35,7 +35,7 @@ class AbiosApiController extends Controller
 
         $payload = [];
         if ($request->game) {
-            $payload['games'] = $request->game;
+            $payload['games'] = [$request->game];
         }
 
         $payload['page'] = $request->page ?? 1;
@@ -46,6 +46,7 @@ class AbiosApiController extends Controller
         $payload['with'] = ['tournament'];
 
         $cacheKey = md5($endpoint.serialize($payload));
+
         return Cache::remember($cacheKey, 600, fn() => $this->api->request($endpoint, $payload));
 
     }
