@@ -24,7 +24,7 @@ services:
       - ./:/var/www
       - ./docker/nginx/ssl:/etc/nginx/ssl
 
-  mysql:
+  sql:
     image: postgres:latest
     container_name: vk-hack-sql
     restart: unless-stopped
