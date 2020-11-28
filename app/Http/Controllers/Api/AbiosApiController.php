@@ -43,7 +43,7 @@ class AbiosApiController extends Controller
         $payload['starts_before'] = $this->api->formatDate($request->starts_before ?? now()->endOfDay()->timestamp);
 
 
-        $payload['with'] = ['tournament'];
+      //  $payload['with'] = ['tournament'];
 
         $cacheKey = md5($endpoint.serialize($payload));
 
