@@ -5,9 +5,11 @@ import {Panel, PanelHeader} from '@vkontakte/vkui';
 import {RouterContext, games} from '../App';
 import Group from "@vkontakte/vkui/dist/components/Group/Group";
 import BackButton from "../components/BackButton";
+import TeamLogo from "../components/TeamLogo";
+import {Icon24Done} from "@vkontakte/icons";
 
 
-const GameList = ({go, setGame}) => {
+const GameList = ({go, setGame, game}) => {
     const onClick = id => e => {
         setGame(id);
         go(e);
@@ -18,10 +20,14 @@ const GameList = ({go, setGame}) => {
 
         return (
             <Cell
-                before={<img width={24} height={24} src={icon} alt='game-icon'/>}
+                before={
+                    <div style={{marginRight: '8px'}}>
+                        <TeamLogo background={icon} width={'25px'} height={'25px'}/>
+                    </div>
+                }
                 onClick={onClick(id)}
                 data-to='matches'
-                asideContent={value}
+                asideContent={id === game ? <Icon24Done fill="var(--accent)"/> : null}
                 key={id}
             >
                 {value}
@@ -31,24 +37,29 @@ const GameList = ({go, setGame}) => {
 }
 
 const Match = ({id}) => {
-    const {go, setGame} = useContext(RouterContext);
+    const
+        {
+            go, setGame, game
+        }
+            = useContext(RouterContext);
 
     return (
-        <Panel id={id}>
-            <PanelHeader left={<BackButton go={go} dataTo="matches"/>}>
-                Выбор игры
+        <Panel
+            id={id}>
+            <PanelHeader
+                left={
+                    <BackButton go={go} dataTo="matches"/>
+                }>
+                Выбор
+                игры
             </PanelHeader>
             <Group>
                 <List>
-                    <GameList go={go} setGame={setGame}/>
+                    <GameList go={go} setGame={setGame} game={game}/>
                 </List>
             </Group>
         </Panel>
     );
-}
-
-Match.propTypes = {
-    id: PropTypes.string.isRequired,
 };
 
 export default Match;

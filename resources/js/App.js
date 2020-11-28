@@ -28,9 +28,9 @@ export const RouterContext = React.createContext({
 });
 
 export const games = [
-    {id: 1, value: 'Dota 2', icon: DotaIcon},
-    {id: 2, value: 'LOL', icon: LolIcon},
-    {id: 5, value: 'CS:GO', icon: CSIcon}
+    {id: 1, value: 'Dota 2', icon: "https://img.abiosgaming.com/games/flat-rectangular-Dota-logo.jpg"},
+    {id: 2, value: 'LOL', icon: "https://img.abiosgaming.com/games/flat-rectangular-lol-logo.jpg"},
+    {id: 5, value: 'CS:GO', icon: "https://img.abiosgaming.com/games/flat-rectangular-cs-go-logo.jpg"}
 ];
 
 const App = () => {
