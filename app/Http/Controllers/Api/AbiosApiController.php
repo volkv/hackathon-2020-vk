@@ -35,7 +35,7 @@ class AbiosApiController extends Controller
 
         $payload = [];
         $payload['games'] = [1,2,5];
-        
+
         if ($request->game) {
             $payload['games'] = [$request->game];
         }
@@ -49,7 +49,7 @@ class AbiosApiController extends Controller
 
         $cacheKey = md5($endpoint.serialize($payload));
 
-        return Cache::remember($cacheKey, 600, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
 
     }
 
@@ -64,6 +64,6 @@ class AbiosApiController extends Controller
         $payload['with'] = ['comp_perf', 'casters'];
 
         $cacheKey = md5($endpoint.serialize($payload));
-        return Cache::remember($cacheKey, 600, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
     }
 }
