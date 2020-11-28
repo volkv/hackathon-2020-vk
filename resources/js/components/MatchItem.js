@@ -12,8 +12,6 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
         go(e);
     };
 
-    console.log(gameIcon)
-
     return (
         <Div onClick={onClick} data-to="match" className="match__row">
             <div className="match__game">
@@ -22,7 +20,7 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
             <div className="match__teams">
                 <div className="match__team">
                     <TeamLogo background={teamHome.images.default}/>
-                    <div>
+                    <div className='match__team-name'>
                         {teamHome.name}
                     </div>
                 </div>
@@ -31,7 +29,7 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
                 </div>
                 <div className="match__team">
                     <TeamLogo background={teamAway.images.default}/>
-                    <div>
+                    <div className='match__team-name'>
                         {teamAway.name}
                     </div>
                 </div>

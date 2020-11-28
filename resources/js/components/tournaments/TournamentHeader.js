@@ -1,8 +1,6 @@
 import React, {useContext, useState} from 'react';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-import '../../../css/tournament.css'
-
 const TournamentHeader = ({}) => {
 
     return (

@@ -30,11 +30,11 @@ const Tournament = ({id}) => {
                 <TabsItem
                     selected={activeTab === 'bracket'}
                     onClick={() => setActiveTab('bracket')}
-                >Статистика</TabsItem>
+                >Турнирная сетка</TabsItem>
                 <TabsItem
                     selected={activeTab === 'matches'}
                     onClick={() => setActiveTab('matches')}
-                >Составы</TabsItem>
+                >Матчи</TabsItem>
             </Tabs>
             {activeTab === 'bracket' &&
             <TournamentBracket />

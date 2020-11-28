@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Div} from "@vkontakte/vkui";
 import {RouterContext} from '../../App';
 
-import '../../../css/tournament.css'
 import TeamLogo from "../TeamLogo";
 
 const TournamentItem = () => {
@@ -15,12 +14,12 @@ const TournamentItem = () => {
 
     return (
         <Div onClick={onClick} data-to="tournament" className="tournament__row">
-            <div className="">
+            <div className="tournament__logo">
                 <TeamLogo width={'25px'} height={'25px'}/>
             </div>
-            <div>
-                <div>ESL PRO</div>
-                <div>24.01 - 25.02</div>
+            <div className="tournament__info">
+                <div className="tournament__title">ESL PRO</div>
+                <div className="tournament__date">24.01 - 25.02</div>
             </div>
         </Div>
     );

@@ -3,6 +3,18 @@
     position: relative;
 }
 
+.match-header__tournament {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.match-header__date {
+    line-height: 18px;
+    color: var(--tabbar_tablet_text_secondary);
+}
+
+
 .match-header__teams {
     display: flex;
     justify-content: space-between;
@@ -48,6 +60,7 @@
 
 .match__row:hover {
     background: var(--background_hover);
+    cursor: pointer;
 }
 
 .match__teams {
@@ -63,11 +76,22 @@
     width: 125px;
 }
 
+.match__team-name {
+    text-align: center;
+}
+
 .match__score {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 8px;
+}
+
+.match__score > div {
+    background: var(--input_background);
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 10px;
 }
 
 .match__date {
