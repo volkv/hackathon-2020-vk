@@ -21,6 +21,11 @@ const Match = ({id}) => {
         </PanelHeaderButton>
     );
 
+    const rosters = [
+        {id: 1, players: ['foo', 'foo1', 'foo2', 'foo3']},
+        {id: 2, players: ['foo', 'foo1', 'foo2', 'foo3']}
+    ];
+
     return (
         <Panel id={id}>
             <PanelHeader left={<BackBtn/>}>Матч</PanelHeader>
@@ -37,7 +42,7 @@ const Match = ({id}) => {
                 >Составы</TabsItem>
             </Tabs>
             {activeTab === 'rosters' &&
-            <MatchRoster roster={{roster: 'Состав'}}/>
+            <MatchRoster rosters={rosters}/>
             }
             {activeTab === 'stats' &&
             <MatchStats stats={{stats: 'Стата'}}/>

@@ -20,7 +20,7 @@ const Matches = ({ id }) => {
             <PanelHeader>Матчи</PanelHeader>
             <FormLayout>
                 <SelectMimicry
-                    top="Выберите страну"
+                    top="Выберите игру"
                     placeholder="Не выбрана"
                     data-to="gamesFilter"
                     onClick={go}
