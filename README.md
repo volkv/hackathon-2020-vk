@@ -1,11 +1,14 @@
 ![Россия](https://leadersofdigital.ru/89e34a592e531d209b4a83f1fb649425.svg)
 [<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/services)
 
+
 # Команда Киборги - Кейс ВК
 
 ### Разработать мини-приложение, базирующееся на платформе VK Mini Apps социальной сети ВКонтакте, которое поможет пользователю в решении повседневных социальных задач, связанных с игровой индустрией, и дополнит «суперприложение» ВКонтакте
 
 _Киберспорт \\ Digital_
+
+![VK.Кибер](https://vk-cyber.volkv.com/media/vk-cyber-logo.jpg)
 
 # Live Vk-Mini-App *VK.Киберспорт*
 
