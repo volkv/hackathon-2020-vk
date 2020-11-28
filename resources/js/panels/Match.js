@@ -7,6 +7,7 @@ import MatchRoster from "../components/matches/MatchRoster";
 import MatchStats from "../components/matches/MatchStats";
 import {get} from "../api";
 import BackButton from "../components/BackButton";
+import MatchStream from "../components/matches/MatchStream";
 
 const Match = ({id}) => {
     const [activeTab, setActiveTab] = useState('stats');
@@ -27,45 +28,41 @@ const Match = ({id}) => {
 
     return (
         <Panel id={id}>
-            <PanelHeader left={<BackButton go={go} dataTo="matches"/>}>Матч</PanelHeader>
-            {currentMatch && !popout && (
-                <>
-                    <MatchHeader
-                        teamHome={currentMatch.rosters[0].teams[0]}
-                        teamAway={currentMatch.rosters[1].teams[0]}
-                        match={currentMatch.id}
-                        scores={currentMatch.scores}
-                        startTime={currentMatch.start}
-                        endTime={currentMatch.end}
-                        teamHomeId={currentMatch.rosters[0].id}
-                        teamAwayId={currentMatch.rosters[1].id}
-                        id={currentMatch.id}
-                    />
-                    <Separator wide/>
-                    <Tabs>
-                        <TabsItem selected={activeTab === 'stats'} onClick={() => setActiveTab('stats')}>
-                            Статистика
-                        </TabsItem>
-                        <TabsItem selected={activeTab === 'rosters'} onClick={() => setActiveTab('rosters')}>
-                            Составы
-                        </TabsItem>
-                    </Tabs>
-                    {activeTab === 'rosters' && (
-                        <MatchRoster
-                            teamHomeRoster={currentMatch.rosters[0].players}
-                            teamAwayRoster={currentMatch.rosters[1].players}
-                        />
-                    )}
-                    {activeTab === 'stats' && <MatchStats stats={{stats: 'Стата'}}/>}
-                    <iframe
-                        src="//vk.com/video_ext.php?oid=-91492813&id=456239109&hash=9ee5bb81325a16eb"
-                        width="100%"
-                        height="300"
-                        frameBorder="0"
-                        allowFullScreen
-                    />
-                </>
-            )}
+            {currentMatch &&
+
+            <PanelHeader left={<BackButton go={go}
+                                           dataTo="matches"/>}>{currentMatch.rosters[0].teams[0].name} vs {currentMatch.rosters[1].teams[0].name}</PanelHeader>
+            }
+            {currentMatch && <MatchHeader
+                bestOf={currentMatch.bestOf}
+                matchFormat={currentMatch.title}
+                teamHome={currentMatch.rosters[0].teams[0]}
+                teamAway={currentMatch.rosters[1].teams[0]}
+                match={currentMatch.id}
+                scores={currentMatch.scores}
+                startTime={currentMatch.start}
+                endTime={currentMatch.end}
+                teamHomeId={currentMatch.rosters[0].id}
+                teamAwayId={currentMatch.rosters[1].id}
+                id={currentMatch.id}
+            />}
+            <Separator wide/>
+            <Tabs>
+                <TabsItem selected={activeTab === 'stats'} onClick={() => setActiveTab('stats')}>
+                    Статистика
+                </TabsItem>
+                <TabsItem selected={activeTab === 'rosters'} onClick={() => setActiveTab('rosters')}>
+                    Составы
+                </TabsItem>
+            </Tabs>
+            {activeTab === 'rosters' && currentMatch &&
+            <MatchRoster teamHomeRoster={currentMatch.rosters[0].players}
+                         teamAwayRoster={currentMatch.rosters[1].players}/>
+            }
+            {activeTab === 'stats' &&
+            <MatchStats stats={{stats: 'Стата'}}/>
+            }
+            <MatchStream/>
         </Panel>
     )
 };

@@ -12,9 +12,15 @@
 }
 
 .match-header__tournament {
+    margin-bottom: 4px;
     font-size: 18px;
     line-height: 18px;
+}
+
+.match-header__tournament-format {
     margin-bottom: 8px;
+    line-height: 18px;
+    color: var(--tabbar_tablet_text_secondary);
 }
 
 .match-header__date {
@@ -81,7 +87,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 125px;
+    width: 100px;
+    @media only screen and (min-width: 767.9px) {
+        width: 125px;
+    }
 }
 
 .match__team-name {
@@ -93,6 +102,10 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 8px;
+
+    @media only screen and (max-width: 767px) {
+        margin: 0 16px;
+    }
 }
 
 .match__score > div {
@@ -105,8 +118,19 @@
 .match__date {
     display: flex;
     font-size: 14px;
+
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 .match__game {
     display: flex;
+}
+
+.match__stream-container {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -6,9 +6,10 @@ import {Button, Snackbar} from "@vkontakte/vkui";
 import bridge from "@vkontakte/vk-bridge";
 import {Icon16Done} from "@vkontakte/icons";
 import Avatar from "@vkontakte/vkui/dist/components/Avatar/Avatar";
+import {DateTime, Duration} from "luxon";
 
 
-const MatchHeader = ({teamHome, teamAway, startTime, endTime, scores, teamHomeId, teamAwayId, id}) => {
+const MatchHeader = ({teamHome, teamAway, startTime, endTime, scores, teamHomeId, teamAwayId, matchFormat, bestOf, id}) => {
 
     const [snackBar, setSnackBar] = useState(null);
 
@@ -67,12 +68,24 @@ const MatchHeader = ({teamHome, teamAway, startTime, endTime, scores, teamHomeId
 
     const share = () => bridge.send("VKWebAppShare", {"link": "https://vk.com/app7680133"})
 
+    const time = DateTime.fromSQL(startTime);
+    const timeDuration = Duration.fromObject(time.toObject());
+    const currentTime = Duration.fromObject(DateTime.local().toObject());
+    const {days} = timeDuration.minus(currentTime).toObject();
+    let timeCaption = '';
+    if(days === 0){
+        timeCaption = `сегодня в ${time.toFormat('HH:mm')}`;
+    } else {
+        timeCaption = time.setLocale('ru').toLocaleString(({ weekday: 'long', month: 'long', day: '2-digit' }));
+    }
+
     return (
         <Div>
             <div className="match-header">
                 <div className="match-header__top">
                     <div className="match-header__tournament">ESL 2020</div>
-                    <div className="match-header__date">{startTime}</div>
+                    <div className="match-header__tournament-format">{matchFormat}. Best of {bestOf}</div>
+                    <div className="match-header__date">{timeCaption}</div>
                 </div>
 
                 <div className="match-header__teams">
