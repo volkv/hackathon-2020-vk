@@ -34,6 +34,8 @@ class AbiosApiController extends Controller
         ]);
 
         $payload = [];
+        $payload['games'] = [1,2,5];
+        
         if ($request->game) {
             $payload['games'] = [$request->game];
         }
