@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
 import '../../../css/match.css'
+import TeamLogo from "../TeamLogo";
 
 const MatchHeader = props => {
 
@@ -18,11 +19,11 @@ const MatchHeader = props => {
                         - : -
                     </div>
                     <div className="match-header__team">
-                        <div className="match-header__team-logo"></div>
+                        <div className="match-header__team-logo"><TeamLogo width={"85px"} height={"85px"} /></div>
                         <div className="match-header__team-name">{props.team_1}</div>
                     </div>
                     <div className="match-header__team">
-                        <div className="match-header__team-logo"></div>
+                        <div className="match-header__team-logo"><TeamLogo width={"85px"} height={"85px"} /></div>
                         <div className="match-header__team-name">{props.team_2}</div>
                     </div>
                 </div>
