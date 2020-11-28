@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
-import {Panel, Separator} from "@vkontakte/vkui";
+import {Separator} from "@vkontakte/vkui";
 import Icon28ChevronDownOutline from '@vkontakte/icons/dist/28/chevron_down_outline';
-import MatchHeader from "./MatchHeader";
 
 const MatchStream = () => {
 
     const [streamState, setStreamState] = useState(false)
     const [iconStyle, setIconStyle] = useState({transform: 'rotate(0deg)'})
     const onClick = () => {
-        if(streamState) {
+        if (streamState) {
             setStreamState(false)
             setIconStyle({transform: 'rotate(0deg)'})
         } else {
@@ -26,8 +25,8 @@ const MatchStream = () => {
                 <Icon28ChevronDownOutline style={iconStyle}/>
             </div>
             {streamState &&
-            <iframe src="//vk.com/video_ext.php?oid=-91492813&id=456239109&hash=9ee5bb81325a16eb" width="100%"
-                    height="300" frameBorder="0" allowFullScreen></iframe>}
+            <iframe src="//vk.com/video_ext.php?oid=-129098239&id=456239466&hash=251d35f224aeea3d&hd=2" width="100%"
+                    height="480" frameBorder="0" allowFullScreen></iframe>}
         </Div>
     )
 };
