@@ -12,9 +12,9 @@ const osName = platform();
 
 const Match = ({id}) => {
     const [activeTab, setActiveTab] = useState('stats');
-    console.log(activeTab)
+    const {go, match} = useContext(RouterContext);
+    console.log('match', match);
 
-    const {go} = useContext(RouterContext);
     const BackBtn = () => (
         <PanelHeaderButton onClick={go} data-to="matches">
             {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}

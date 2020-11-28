@@ -1,12 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useContext} from 'react';
 import {Div} from "@vkontakte/vkui";
+import {RouterContext} from '../App';
 
 import '../../css/match.css'
 import TeamLogo from "./TeamLogo";
 
 const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeId, teamAwayId}) => {
-    const onClick = () => {};
+    const {go, setMatch} = useContext(RouterContext);
+
+    const onClick = (e) => {
+        setMatch(match);
+        go(e);
+    };
 
     return (
         <Div onClick={onClick} data-to="match">
