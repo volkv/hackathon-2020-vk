@@ -1,8 +1,0 @@
-.tournament__row {
-    display: flex;
-    align-items: center;
-}
-
-.tournament__row:hover {
-    background: var(--background_hover);
-}

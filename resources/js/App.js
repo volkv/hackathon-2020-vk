@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {Epic, Tabbar, TabbarItem, View} from '@vkontakte/vkui';
-import '@vkontakte/vkui/dist/vkui.css';
+import {Epic, Tabbar, TabbarItem, View, Panel} from '@vkontakte/vkui';
 import Matches from "./panels/Matches";
 import Match from "./panels/Match";
 import {Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";

@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import {Panel, PanelHeader, SelectMimicry} from '@vkontakte/vkui';
 import {RouterContext, games} from '../../App'
 
-import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import { get } from '../../api';
 import TournamentItem from "../../components/tournaments/TournamentItem";
 

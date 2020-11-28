@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-import '../../../css/roster.css'
-
 const MatchRoster = ({teamHomeRoster, teamAwayRoster}) => {
 
     return (

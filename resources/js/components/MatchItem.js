@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
-import { Div } from "@vkontakte/vkui";
-import { RouterContext } from '../App';
-import '../../css/match.css'
+
+import {Div} from "@vkontakte/vkui";
+import {RouterContext} from '../App';
+
 import TeamLogo from "./TeamLogo";
 import { DateTime, Duration } from 'luxon';
 
@@ -12,7 +13,6 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
         setMatch(match);
         go(e);
     };
-
     const time = DateTime.fromSQL(startTime);
     const timeDuration = Duration.fromObject(time.toObject());
     const currentTime = Duration.fromObject(DateTime.local().toObject());
@@ -23,7 +23,6 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
     } else {
         timeCaption = time.toLocaleString(({ weekday: 'long', month: 'long', day: '2-digit' }));
     }
-
     return (
         <Div onClick={onClick} data-to="match" className="match__row">
             <div className="match__game">
@@ -32,7 +31,7 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
             <div className="match__teams">
                 <div className="match__team">
                     <TeamLogo background={teamHome.images.default}/>
-                    <div>
+                    <div className='match__team-name'>
                         {teamHome.name}
                     </div>
                 </div>
@@ -41,7 +40,7 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
                 </div>
                 <div className="match__team">
                     <TeamLogo background={teamAway.images.default}/>
-                    <div>
+                    <div className='match__team-name'>
                         {teamAway.name}
                     </div>
                 </div>

@@ -1,12 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {platform, IOS, FixedLayout, Separator, Tabs, TabsItem, TabbarItem} from '@vkontakte/vkui';
-import {Panel, PanelHeader, PanelHeaderButton} from '@vkontakte/vkui';
-import {Icon28ChevronBack, Icon24Back} from '@vkontakte/icons';
+import {Separator, Tabs, TabsItem} from '@vkontakte/vkui';
+import {Panel, PanelHeader} from '@vkontakte/vkui';
 import {RouterContext} from '../../App';
-
-const osName = platform();
+import TournamentHeader from "../../components/tournaments/TournamentHeader";
+import TournamentBracket from "../../components/tournaments/TournamentBracket";
+import TournamentMatches from "../../components/tournaments/TournamentMatches";
+import BackButton from "../../components/BackButton";
 
 const Tournament = ({id}) => {
+    const [activeTab, setActiveTab] = useState('bracket');
     const {go} = useContext(RouterContext);
 
     // useEffect(() => {
@@ -18,16 +20,28 @@ const Tournament = ({id}) => {
     //     });
     // },[match]);
 
-    const BackBtn = () => (
-        <PanelHeaderButton onClick={go} data-to="tournaments">
-            {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-        </PanelHeaderButton>
-    );
-
     return (
         <Panel id={id}>
-            <PanelHeader left={<BackBtn/>}>Турнир</PanelHeader>
+            <PanelHeader left={<BackButton go={go} dataTo="tournaments" />}>Турнир</PanelHeader>
             <Separator wide/>
+            <TournamentHeader />
+            <Separator wide/>
+            <Tabs>
+                <TabsItem
+                    selected={activeTab === 'bracket'}
+                    onClick={() => setActiveTab('bracket')}
+                >Турнирная сетка</TabsItem>
+                <TabsItem
+                    selected={activeTab === 'matches'}
+                    onClick={() => setActiveTab('matches')}
+                >Матчи</TabsItem>
+            </Tabs>
+            {activeTab === 'bracket' &&
+            <TournamentBracket />
+            }
+            {activeTab === 'matches' &&
+            <TournamentMatches/>
+            }
         </Panel>
     )
 }
