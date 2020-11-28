@@ -50,7 +50,7 @@ class AbiosApiController extends Controller
 
         $cacheKey = md5($endpoint.serialize($payload));
 
-        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey, 60 * 60, fn() => $this->api->request($endpoint, $payload));
 
     }
 
@@ -78,7 +78,7 @@ class AbiosApiController extends Controller
 
         $cacheKey = md5($endpoint.serialize($payload));
 
-        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey, 60 * 60, fn() => $this->api->request($endpoint, $payload));
 
     }
 
@@ -93,7 +93,7 @@ class AbiosApiController extends Controller
         $payload['with'] = ['comp_perf', 'casters'];
 
         $cacheKey = md5($endpoint.serialize($payload));
-        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey, 60 * 60, fn() => $this->api->request($endpoint, $payload));
     }
 
     public function tournamentSingle($id)
@@ -107,6 +107,6 @@ class AbiosApiController extends Controller
         $payload['with'] = ['series'];
 
         $cacheKey = md5($endpoint.serialize($payload));
-        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+        return Cache::remember($cacheKey,  60 * 60, fn() => $this->api->request($endpoint, $payload));
     }
 }
