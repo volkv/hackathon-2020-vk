@@ -38,7 +38,7 @@ const Matches = ({ id }) => {
 
     return (
         <Panel id={id}>
-            <PanelHeader>Матчи {selectedGame? selectedGame.value : ''} {date ? `${ DateTime.fromSeconds(date).setLocale('ru').toLocaleString(({ weekday: 'short', month: 'long', day: '2-digit' }))}` : ''}</PanelHeader>
+            <PanelHeader>Матчи {selectedGame? selectedGame.value : ''} {date ? `${ DateTime.fromSeconds(date).toUTC().plus({day: 1}).setLocale('ru').toLocaleString(({ weekday: 'short', month: 'long', day: '2-digit' }))}` : ''}</PanelHeader>
             <FormLayout>
                 <SelectMimicry top="Выберите игру" placeholder="Не выбрана" data-to="gamesFilter" onClick={go}>
                     {selectedGame? selectedGame.value : selectedGame}
