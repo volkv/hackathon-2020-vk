@@ -7,11 +7,10 @@ const TeamLogo = ({background, width, height}) => {
     const logoStyle = {
         width: width ? width : "45px",
         height: height ? height : "45px",
-    }
-    console.log(background)
+    };
     const spanStyle = {
         background: background ? `url("${background}") center center / cover no-repeat rgb(249, 249, 249)` : ''
-    }
+    };
     return (
         <div className="team__logo" style={logoStyle}>
             <div className='team__image'>
