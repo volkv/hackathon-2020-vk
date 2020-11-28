@@ -63,7 +63,7 @@ const Matches = ({ id }) => {
             })}
         </Panel>
     );
-}
+};
 
 Matches.propTypes = {
     id: PropTypes.string.isRequired,
