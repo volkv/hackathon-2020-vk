@@ -10,9 +10,26 @@
 .tournament-header {
     padding: 25px 16px 28px;
     position: relative;
+    text-align: center;
 }
 
-.tournament-header {
-    text-align: center;
-    margin-bottom: 12px;
+.tournament-header__tournament {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.tournament-header__date {
+    line-height: 18px;
+    color: var(--tabbar_tablet_text_secondary);
+}
+
+.tournament__logo {
+    margin-right: 12px;
+}
+
+.tournament__date {
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--tabbar_tablet_text_secondary);;
 }
