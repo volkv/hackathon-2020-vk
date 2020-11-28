@@ -55,8 +55,8 @@ const Match = ({id}) => {
             {activeTab === 'stats' &&
             <MatchStats stats={{stats: 'Стата'}}/>
             }
-            <iframe src="https://player.twitch.tv/?channel=dota2ruhub&parent=vk.com" frameBorder="0"
-                    allowFullScreen="true" scrolling="no" height="378" width="620"></iframe>
+            <iframe src="//vk.com/video_ext.php?oid=-91492813&id=456239109&hash=9ee5bb81325a16eb" width="100%"
+                    height="300" frameBorder="0" allowFullScreen></iframe>
         </Panel>
     )
 }
