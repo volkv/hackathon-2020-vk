@@ -56,7 +56,6 @@ class AbiosApiController extends Controller
 
     public function tournamentsList(Request $request)
     {
-
         $endpoint = 'tournaments';
 
         $this->validate($request, [
@@ -77,8 +76,6 @@ class AbiosApiController extends Controller
         $payload['starts_after'] = $this->api->formatDate($request->starts_after ?? now()->startOfDay()->timestamp);
 
 
-        $payload['with'] = ['casters'];
-
         $cacheKey = md5($endpoint.serialize($payload));
 
         return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
@@ -94,6 +91,20 @@ class AbiosApiController extends Controller
         $endpoint = "series/$id";
 
         $payload['with'] = ['comp_perf', 'casters'];
+
+        $cacheKey = md5($endpoint.serialize($payload));
+        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+    }
+
+    public function tournamentSingle($id)
+    {
+        if (! (int) $id) {
+            throw new ValidationException('Wrong id');
+        }
+
+        $endpoint = "tournaments/$id";
+
+        $payload['with'] = ['series'];
 
         $cacheKey = md5($endpoint.serialize($payload));
         return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));

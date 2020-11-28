@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/v1/series', 'AbiosApiController@seriesList');
+Route::get('/v1/tournaments', 'AbiosApiController@tournamentsList');
 Route::get('/v1/series/{id}', 'AbiosApiController@seriesSingle');
+Route::get('/v1/tournament/{id}', 'AbiosApiController@tournamentSingle');

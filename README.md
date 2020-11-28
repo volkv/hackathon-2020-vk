@@ -1,12 +1,14 @@
 ![Россия](https://leadersofdigital.ru/89e34a592e531d209b4a83f1fb649425.svg)
-[<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/services) 
+[<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/services)
 
 # Команда Киборги - Кейс ВК
 
 ### Разработать мини-приложение, базирующееся на платформе VK Mini Apps социальной сети ВКонтакте, которое поможет пользователю в решении повседневных социальных задач, связанных с игровой индустрией, и дополнит «суперприложение» ВКонтакте
+
 _Киберспорт \\ Digital_
 
-# Live Vk-Mini-App *VK.Киберспорт* 
+# Live Vk-Mini-App *VK.Киберспорт*
+
 # https://vk.com/app7680133 🎮
 
 ## Функционал:
@@ -35,29 +37,44 @@ _Киберспорт \\ Digital_
 * Events / Notification Channels
 
 ## Локальный запуск (Linux / macOS):
+
 ### Зависимости
+
 * git (`apt install git`)
 * make (`apt install make`)
 * docker ([установка](https://docs.docker.com/engine/install/))
 * docker-compose ([установка](https://docs.docker.com/compose/install/))
 
 ### Сборка
+
 * `cp .env.exmaple .env`
 * `make install`
 
 Успех. Сервер запущен и доступен по адресу: https://vk.test:8080
 
-
 ## Методы API
 
-> GET /api/v1/series{params} 
+### Список матчей
+> GET /api/v1/series{params}
 
 Params: game[1,2,5] | page[int] | starts_after[timestamp] | starts_before[timestamp]
 
 Ex: https://vk-cyber.volkv.com/api/v1/series?game=1
+### Список турниров
+> GET /api/v1/tournaments{params}
 
+Params: game[1,2,5] | page[int] | starts_after[timestamp]
+
+Ex: https://vk-cyber.volkv.com/api/v1/tournaments?game=1
+### Информация по матчу
 > GET /api/v1/series/{id}
 
 Params: id[int]
 
 Ex: https://vk-cyber.volkv.com/api/v1/series/258975
+### Информация по турниру
+> GET /api/v1/tournament/{id}
+
+Params: id[int]
+
+Ex: https://vk-cyber.volkv.com/api/v1/tournament/5168
