@@ -18,7 +18,7 @@ const Matches = ({ id }) => {
         get(url).then(data => {
             setMatches(data.data);
         }).catch((err) => {
-            console.log('series err', err)
+            console.error('series err', err)
         });
     }, [get, selectedGame]);
 
@@ -43,6 +43,7 @@ const Matches = ({ id }) => {
                         scores={item.scores}
                         startTime={item.start}
                         endTime={item.end}
+                        gameIcon = {item.game.images.rectangle}
                         teamHomeId={item.rosters[0].id}
                         teamAwayId={item.rosters[1].id}
                     />

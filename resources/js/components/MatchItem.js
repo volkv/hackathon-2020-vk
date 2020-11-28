@@ -5,7 +5,7 @@ import {RouterContext} from '../App';
 import '../../css/match.css'
 import TeamLogo from "./TeamLogo";
 
-const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeId, teamAwayId}) => {
+const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeId, teamAwayId, gameIcon}) => {
     const {go, setMatch} = useContext(RouterContext);
 
     const onClick = (e) => {
@@ -13,11 +13,13 @@ const Match = ({teamHome, teamAway, startTime, endTime, scores, match, teamHomeI
         go(e);
     };
 
+    console.log(gameIcon)
+
     return (
         <Div onClick={onClick} data-to="match">
             <div className="match__row">
                 <div className="match__game">
-                    <TeamLogo/>
+                    <TeamLogo background={gameIcon} width={'25px'} height={'25px'}/>
                 </div>
                 <div className="match__teams">
                     <div className="match__team">
