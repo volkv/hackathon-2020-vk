@@ -1,4 +1,4 @@
-Цифровой прорыв 2020 ![Россия](https://leadersofdigital.ru/89e34a592e531d209b4a83f1fb649425.svg)
+### ![Россия](https://leadersofdigital.ru/89e34a592e531d209b4a83f1fb649425.svg) Цифровой прорыв 2020
 
 # Команда Киборги - Кейс ВК
 
@@ -8,6 +8,7 @@ _Киберспорт \\ Digital_
 
 ![VK.Кибер](https://vk-cyber.volkv.com/media/vk-cyber-logo.jpg)
 
+# Готовое решение
 
 # [<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/app7680133) https://vk.com/app7680133 🎮
 
