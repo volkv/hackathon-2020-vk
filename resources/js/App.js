@@ -12,6 +12,8 @@ import GamesFilter from "./panels/GamesFilter";
 import DotaIcon from '../../public/media/games/1.svg';
 import LolIcon from '../../public/media/games/2.svg';
 import CSIcon from '../../public/media/games/5.svg';
+import Tournaments from "./panels/tournaments/Tournaments";
+import Tournament from "./panels/tournaments/Tournament";
 
 
 export const RouterContext = React.createContext({
@@ -37,7 +39,7 @@ export const games = [
 
 const App = () => {
     const [activeStory, setActiveStory] = useState('matches');
-    const [activeView, setActiveView] = useState('view');
+    const [activeView, setActiveView] = useState('tournaments');
     const [activePanel, setActivePanel] = useState('matches');
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
@@ -85,8 +87,8 @@ const App = () => {
                     ><Icon28NewsfeedOutline/></TabbarItem>
                     <TabbarItem
                         onClick={onStoryChange}
-                        selected={() => setActiveView('view1')}
-                        data-story="view1"
+                        selected={() => setActiveView('tournaments')}
+                        data-story="tournaments"
                         text="Турниры"
                     ><Icon28ServicesOutline/></TabbarItem>
                 </Tabbar>
@@ -96,8 +98,9 @@ const App = () => {
                     <Match id='match'/>
                     <GamesFilter id="gamesFilter" />
                 </View>
-                <View id='match' activePanel='home'>
-                    <Home id='home' fetchedUser={fetchedUser} />
+                <View id='tournaments' activePanel='tournaments'>
+                    <Tournaments id='tournaments' />
+                    <Tournament id='tournament' />
                 </View>
             </Epic>
         </RouterContext.Provider>
