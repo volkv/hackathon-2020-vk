@@ -57,24 +57,24 @@ _Киберспорт \\ Digital_
 ### Список матчей
 > GET /api/v1/series{params}
 
-Params: game[1,2,5] | page[int] | starts_after[timestamp] | starts_before[timestamp]
+Params: game `[1,2,5]` | page `[int]` | starts_after `[timestamp]` | starts_before `[timestamp]`
 
 Ex: https://vk-cyber.volkv.com/api/v1/series?game=1
 ### Список турниров
 > GET /api/v1/tournaments{params}
 
-Params: game[1,2,5] | page[int] | starts_after[timestamp]
+Params: game `[1,2,5]` | page `[int]` | starts_after `[timestamp]`
 
 Ex: https://vk-cyber.volkv.com/api/v1/tournaments?game=1
 ### Информация по матчу
 > GET /api/v1/series/{id}
 
-Params: id[int]
+Params: id `[int]`
 
 Ex: https://vk-cyber.volkv.com/api/v1/series/258975
 ### Информация по турниру
 > GET /api/v1/tournament/{id}
 
-Params: id[int]
+Params: id `[int]`
 
 Ex: https://vk-cyber.volkv.com/api/v1/tournament/5168
