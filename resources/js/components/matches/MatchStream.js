@@ -26,7 +26,7 @@ const MatchStream = () => {
             </div>
             {streamState &&
             <iframe src="//vk.com/video_ext.php?oid=-129098239&id=456239466&hash=251d35f224aeea3d&hd=2" width="100%"
-                    height="480" frameBorder="0" allowFullScreen></iframe>}
+                    height="300" frameBorder="0" allowFullScreen></iframe>}
         </Div>
     )
 };
