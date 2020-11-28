@@ -9,11 +9,12 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    margin-left: 16px;
+    align-items: center;
 }
 
 
 .team__logo {
-    margin-right: 10px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -24,5 +25,19 @@
 .team__image {
     border-radius: 50%;
     padding-top: 100%;
-    background: url("https://object2.vk-apps.com/hs-sport-cece77f1-4bb0-4902-ad1b-bc56c643d80a/media/494/conversions/5fa1c8602a570-x2.jpg") center center / cover no-repeat rgb(249, 249, 249)
+    background: url("https://lurkmore.so/images/thumb/b/b1/Dota2logo.png/200px-Dota2logo.png") center center / cover no-repeat rgb(249, 249, 249)
+}
+
+.match__item-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match__item-team--left {
+    margin-right: 14px;
+}
+
+.match__item-team--right {
+    margin-left: 14px
 }

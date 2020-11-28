@@ -10,9 +10,19 @@ const Match = ({ match, href, dataTo }) => (
         <div className="series__row">
             <TeamLogo/>
             <div className="series__item">
-                <div> <TeamLogo/>{match.team_1}  </div>
+                <div className="match__item-team match__item-team--left">
+                    <TeamLogo/>
+                    <div>
+                        {match.team_1}
+                    </div>
+                </div>
                 -
-                <div> <TeamLogo/>{match.team_2}</div>
+                <div className="match__item-team match__item-team match__item-team--right">
+                    <TeamLogo/>
+                    <div>
+                        {match.team_2}
+                    </div>
+                </div>
             </div>
             <div>
                 {match.team1_score} - {match.team2_score}

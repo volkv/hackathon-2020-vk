@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { platform, IOS } from '@vkontakte/vkui';
 import {Panel, PanelHeader, PanelHeaderButton} from '@vkontakte/vkui';
 import {Icon28ChevronBack,Icon24Back } from '@vkontakte/icons';
-import SeriesHeader from "../components/series/SeriesHeader";
+import MatchHeader from "../components/matches/MatchHeader";
 import {RouterContext} from '../App';
 
 const osName = platform();
@@ -20,7 +20,7 @@ const Match = ({id})=> {
     return (
         <Panel id={id}>
             <PanelHeader left={<BackBtn/>}>Матч</PanelHeader>
-            <SeriesHeader team_1='NAVI' team_2='VP' />
+            <MatchHeader team_1='NAVI' team_2='VP' />
         </Panel>
     )
 }

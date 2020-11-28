@@ -8,6 +8,7 @@ import Home from './panels/Home';
 import Matches from "./panels/Matches";
 import Match from "./panels/Match";
 import {Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
+import GamesFilter from "./panels/GamesFilter";
 
 export const RouterContext = React.createContext({
     panel: 'home',
@@ -58,19 +59,20 @@ const App = () => {
                         onClick={onStoryChange}
                         selected={() => setActiveView('matches')}
                         data-story="matches"
-                        text="Новости"
+                        text="Матчи"
                     ><Icon28NewsfeedOutline/></TabbarItem>
                     <TabbarItem
                         onClick={onStoryChange}
                         selected={() => setActiveView('view1')}
                         data-story="view1"
-                        text="Сервисы"
+                        text="Турниры"
                     ><Icon28ServicesOutline/></TabbarItem>
                 </Tabbar>
             }>
                 <View id="matches" activePanel={activePanel}>
                     <Matches id="matches" />
                     <Match id='match'/>
+                    <GamesFilter id="gamesFilter" />
                 </View>
                 <View id='match' activePanel='home'>
                     <Home id='home' fetchedUser={fetchedUser} />
