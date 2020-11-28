@@ -23,6 +23,10 @@ export const RouterContext = React.createContext({
     setGame: null,
     match: null,
     setMatches: null,
+    date: null,
+    setDate: null,
+    chosen: null,
+    setChosen: null,
 });
 
 export const games = [
@@ -38,6 +42,8 @@ const App = () => {
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
     const [match, setMatch] = useState(null);
+    const [date, setDate] = useState(null);
+    const [chosen, setChosen] = useState(null);
 
     useEffect(() => {
         bridge.subscribe(({detail: {type, data}}) => {
@@ -63,9 +69,9 @@ const App = () => {
 
     const onStoryChange = e => {
         setActiveStory(e.currentTarget.dataset.story);
-    }
+    };
 
-    const value = {panel: activePanel, story: activeStory, view: activeView, go, setGame, game, match, setMatch};
+    const value = {panel: activePanel, story: activeStory, view: activeView, go, setGame, game, match, setMatch, date, setDate, chosen, setChosen};
 
     return (
         <RouterContext.Provider value={value}>
