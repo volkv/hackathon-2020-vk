@@ -7,8 +7,8 @@ const TournamentHeader = ({}) => {
         <Div>
             <div className="tournament-header">
                 <div className="tournament-header__top">
-                    <div className="tournament-header__tournament">ESL 2020</div>
-                    <div className="tournament-header__date">24.02-13.03</div>
+                    <div className="tournament-header__tournament">2020 DreamHack Masters Winter Europe</div>
+                    <div className="tournament-header__date">29 ноября - 05 декабря</div>
                 </div>
             </div>
         </Div>
