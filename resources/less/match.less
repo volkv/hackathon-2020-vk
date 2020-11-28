@@ -103,13 +103,13 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 8px;
-
+align-items: center;
     @media only screen and (max-width: 767px) {
         margin: 0 16px;
     }
 }
 
-.match__score > div {
+.match__score > div:first-child {
     background: var(--input_background);
     padding: 8px;
     font-weight: bold;
@@ -119,10 +119,7 @@
 .match__date {
     display: flex;
     font-size: 14px;
-
-    @media only screen and (max-width: 767px) {
-        display: none;
-    }
+    margin-top: 10px;
 }
 
 .match__game {
