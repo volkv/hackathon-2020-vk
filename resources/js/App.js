@@ -10,6 +10,9 @@ import Match from "./panels/Match";
 import {Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
 import GamesFilter from "./panels/GamesFilter";
 import {get} from './api';
+import DotaIcon from '../../public/media/games/1.svg';
+import LolIcon from '../../public/media/games/2.svg';
+import CSIcon from '../../public/media/games/5.svg';
 
 
 export const RouterContext = React.createContext({
@@ -17,8 +20,15 @@ export const RouterContext = React.createContext({
     story: 'matches',
     view: 'view',
     go: null,
+    game: null,
     setGame: null,
 });
+
+export const games = [
+    {id: 1, value: 'Dota 2', icon: DotaIcon},
+    {id: 2, value: 'LOL', icon: LolIcon},
+    {id: 5, value: 'CS:GO', icon: CSIcon}
+];
 
 const App = () => {
     const [activeStory, setActiveStory] = useState('matches');
@@ -44,15 +54,6 @@ const App = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        const url = game ? `api/v1/series?game=${game}`: `api/v1/series`;
-        get(url).then(data => {
-            console.log('data', data);
-        }).catch((err) => {
-            console.log('series err', err)
-        });
-    }, [get, game]);
-
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
     };
@@ -62,7 +63,7 @@ const App = () => {
         setActiveStory(e.currentTarget.dataset.story);
     }
 
-    const value = {panel: activePanel, story: activeStory, view: activeView, go: go, setGame: setGame};
+    const value = {panel: activePanel, story: activeStory, view: activeView, go: go, setGame: setGame, game: game};
 
     return (
         <RouterContext.Provider value={value}>
