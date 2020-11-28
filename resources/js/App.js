@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {Epic, Root, Tabbar, TabbarItem, View, Panel} from '@vkontakte/vkui';
+import {Epic, Tabbar, TabbarItem, View, Panel} from '@vkontakte/vkui';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Matches from "./panels/Matches";
 import Match from "./panels/Match";
-import {Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
+import {Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
 import GamesFilter from "./panels/GamesFilter";
-import {get} from './api';
 import DotaIcon from '../../public/media/games/1.svg';
 import LolIcon from '../../public/media/games/2.svg';
 import CSIcon from '../../public/media/games/5.svg';
@@ -22,6 +21,8 @@ export const RouterContext = React.createContext({
     go: null,
     game: null,
     setGame: null,
+    match: null,
+    setMatches: null,
 });
 
 export const games = [
@@ -36,6 +37,7 @@ const App = () => {
     const [activePanel, setActivePanel] = useState('matches');
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
+    const [match, setMatch] = useState(null);
 
     useEffect(() => {
         bridge.subscribe(({detail: {type, data}}) => {
@@ -63,7 +65,7 @@ const App = () => {
         setActiveStory(e.currentTarget.dataset.story);
     }
 
-    const value = {panel: activePanel, story: activeStory, view: activeView, go: go, setGame: setGame, game: game};
+    const value = {panel: activePanel, story: activeStory, view: activeView, go, setGame, game, match, setMatch};
 
     return (
         <RouterContext.Provider value={value}>
@@ -94,7 +96,7 @@ const App = () => {
             </Epic>
         </RouterContext.Provider>
     );
-}
+};
 
 export default App;
 
