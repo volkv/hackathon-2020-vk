@@ -49,13 +49,13 @@ _Киберспорт \\ Digital_
 
 ## Методы API
 
-> GET https://vk.test:8080/api/v1/series{params} 
+> GET /api/v1/series{params} 
 
 Params: game[1,2,5] | page[int] | starts_after[timestamp] | starts_before[timestamp]
 
 Ex: https://vk-cyber.volkv.com/api/v1/series?game=1
 
-> GET https://vk.test:8080/api/v1/series/{id}
+> GET /api/v1/series/{id}
 
 Params: id[int]
 
