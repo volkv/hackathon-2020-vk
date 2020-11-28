@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {platform, IOS, FixedLayout, Separator, Tabs, TabsItem, TabbarItem} from '@vkontakte/vkui';
 import {Panel, PanelHeader, PanelHeaderButton} from '@vkontakte/vkui';
@@ -7,13 +7,23 @@ import MatchHeader from "../components/matches/MatchHeader";
 import {RouterContext} from '../App';
 import MatchRoster from "../components/matches/MatchRoster";
 import MatchStats from "../components/matches/MatchStats";
+import {get} from "../api";
 
 const osName = platform();
 
 const Match = ({id}) => {
     const [activeTab, setActiveTab] = useState('stats');
+    const [currentMatch, setCurrentMatch] = useState(null);
     const {go, match} = useContext(RouterContext);
-    console.log('match', match);
+
+    useEffect(() => {
+        const url = `api/v1/series/${match}`;
+        get(url).then(data => {
+            setCurrentMatch(data)
+        }).catch((err) => {
+            console.error('series err', err)
+        });
+    },[match]);
 
     const BackBtn = () => (
         <PanelHeaderButton onClick={go} data-to="matches">
@@ -21,15 +31,19 @@ const Match = ({id}) => {
         </PanelHeaderButton>
     );
 
-    const rosters = [
-        {id: 1, players: ['foo', 'foo1', 'foo2', 'foo3']},
-        {id: 2, players: ['foo', 'foo1', 'foo2', 'foo3']}
-    ];
-
     return (
         <Panel id={id}>
             <PanelHeader left={<BackBtn/>}>Матч</PanelHeader>
-            <MatchHeader team_1='NAVI' team_2='VP'/>
+            {currentMatch && <MatchHeader
+                teamHome={currentMatch.rosters[0].teams[0]}
+                teamAway={currentMatch.rosters[1].teams[0]}
+                match={currentMatch.id}
+                scores={currentMatch.scores}
+                startTime={currentMatch.start}
+                endTime={currentMatch.end}
+                teamHomeId={currentMatch.rosters[0].id}
+                teamAwayId={currentMatch.rosters[1].id}
+            />}
             <Separator wide/>
             <Tabs>
                 <TabsItem
@@ -41,8 +55,8 @@ const Match = ({id}) => {
                     onClick={() => setActiveTab('rosters')}
                 >Составы</TabsItem>
             </Tabs>
-            {activeTab === 'rosters' &&
-            <MatchRoster rosters={rosters}/>
+            {activeTab === 'rosters' && currentMatch &&
+            <MatchRoster teamHomeRoster={currentMatch.rosters[0].players} teamAwayRoster={currentMatch.rosters[1].players}/>
             }
             {activeTab === 'stats' &&
             <MatchStats stats={{stats: 'Стата'}}/>

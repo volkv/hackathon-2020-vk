@@ -18,7 +18,7 @@ const Matches = ({ id }) => {
         get(url).then(data => {
             setMatches(data.data);
         }).catch((err) => {
-            console.log('series err', err)
+            console.error('series err', err)
         });
     }, [get, selectedGame]);
 
