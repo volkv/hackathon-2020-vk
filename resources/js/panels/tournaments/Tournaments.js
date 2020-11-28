@@ -1,30 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {Panel, PanelHeader, SelectMimicry} from '@vkontakte/vkui';
-import {RouterContext, games} from '../../App'
+import {Panel, PanelHeader, ScreenSpinner} from '@vkontakte/vkui';
+import {RouterContext} from '../../App'
 
 import { get } from '../../api';
 import TournamentItem from "../../components/tournaments/TournamentItem";
 
 const Tournaments = ({ id }) => {
-    const {go, game} = useContext(RouterContext);
+    const {setPopout, popout} = useContext(RouterContext);
+    const [tournaments, setTournaments] = useState([]);
 
-    const selectedGame = games.find(item => item.id === game);
-
-    // useEffect(() => {
-    //     const url = selectedGame ? `api/v1/series?game=${selectedGame.id}`: `api/v1/series`;
-    //     get(url).then(data => {
-    //         setMatches(data.data);
-    //     }).catch((err) => {
-    //         console.error('series err', err)
-    //     });
-    // }, [get, selectedGame]);
+    useEffect(() => {
+        setPopout(<ScreenSpinner/>);
+        get('api/v1/tournaments').then(({data}) => {
+            setPopout(null);
+            setTournaments(data)
+        }).catch((err) => {
+            console.error('tournaments err', err);
+            setPopout(null);
+        });
+    }, []);
 
     return (
         <Panel id={id}>
             <PanelHeader>Турниры</PanelHeader>
-            <TournamentItem />
+            {popout ? null : tournaments.map(({title, id, start, end, images}) => {
+                return (
+                    <TournamentItem key={id} title={title} start={start} end={end} logo={images.default}/>
+                );
+            })}
         </Panel>
     );
-}
+};
 
 export default Tournaments;

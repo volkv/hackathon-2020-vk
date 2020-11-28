@@ -11,7 +11,6 @@ import CSIcon from '../../public/media/games/5.svg';
 import Tournaments from "./panels/tournaments/Tournaments";
 import Tournament from "./panels/tournaments/Tournament";
 
-
 export const RouterContext = React.createContext({
     panel: 'home',
     story: 'matches',
@@ -34,9 +33,9 @@ export const games = [
 ];
 
 const App = () => {
-    const [activeStory, setActiveStory] = useState('matches');
-    const [activeView, setActiveView] = useState('matches');
-    const [activePanel, setActivePanel] = useState('matches');
+    const [activeStory, setActiveStory] = useState('tournaments');
+    const [activeView, setActiveView] = useState('tournaments');
+    const [activePanel, setActivePanel] = useState('tournaments');
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
     const [match, setMatch] = useState(null);
@@ -97,7 +96,7 @@ const App = () => {
                     <Match id='match'/>
                     <GamesFilter id="gamesFilter" />
                 </View>
-                <View id='tournaments' activePanel={activePanel}>
+                <View id='tournaments' activePanel={activePanel} popout={popout}>
                     <Tournaments id='tournaments' />
                     <Tournament id='tournament' />
                 </View>
