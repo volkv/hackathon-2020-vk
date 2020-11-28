@@ -34,37 +34,37 @@ const Match = ({id}) => {
     return (
         <Panel id={id}>
             <PanelHeader left={<BackBtn/>}>Матч</PanelHeader>
-            {currentMatch && <MatchHeader
-                teamHome={currentMatch.rosters[0].teams[0]}
-                teamAway={currentMatch.rosters[1].teams[0]}
-                match={currentMatch.id}
-                scores={currentMatch.scores}
-                startTime={currentMatch.start}
-                endTime={currentMatch.end}
-                teamHomeId={currentMatch.rosters[0].id}
-                teamAwayId={currentMatch.rosters[1].id}
-            />}
+            {currentMatch && (
+                <MatchHeader
+                    teamHome={currentMatch.rosters[0].teams[0]}
+                    teamAway={currentMatch.rosters[1].teams[0]}
+                    match={currentMatch.id}
+                    scores={currentMatch.scores}
+                    startTime={currentMatch.start}
+                    endTime={currentMatch.end}
+                    teamHomeId={currentMatch.rosters[0].id}
+                    teamAwayId={currentMatch.rosters[1].id}
+                />
+            )}
             <Separator wide/>
             <Tabs>
-                <TabsItem
-                    selected={activeTab === 'stats'}
-                    onClick={() => setActiveTab('stats')}
-                >Статистика</TabsItem>
-                <TabsItem
-                    selected={activeTab === 'rosters'}
-                    onClick={() => setActiveTab('rosters')}
-                >Составы</TabsItem>
+                <TabsItem selected={activeTab === 'stats'} onClick={() => setActiveTab('stats')}>
+                    Статистика
+                </TabsItem>
+                <TabsItem selected={activeTab === 'rosters'} onClick={() => setActiveTab('rosters')}>
+                    Составы
+                </TabsItem>
             </Tabs>
-            {activeTab === 'rosters' && currentMatch &&
-            <MatchRoster teamHomeRoster={currentMatch.rosters[0].players} teamAwayRoster={currentMatch.rosters[1].players}/>
-            }
-            {activeTab === 'stats' &&
-            <MatchStats stats={{stats: 'Стата'}}/>
-            }
-
+            {activeTab === 'rosters' && currentMatch && (
+                <MatchRoster
+                    teamHomeRoster={currentMatch.rosters[0].players}
+                    teamAwayRoster={currentMatch.rosters[1].players}
+                />
+            )}
+            {activeTab === 'stats' && <MatchStats stats={{stats: 'Стата'}}/>}
         </Panel>
     )
-}
+};
 
 Match.propTypes = {
     id: PropTypes.string.isRequired,

@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {Epic, Tabbar, TabbarItem, View, Panel} from '@vkontakte/vkui';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
+import {Epic, Tabbar, TabbarItem, View} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-
-import Home from './panels/Home';
 import Matches from "./panels/Matches";
 import Match from "./panels/Match";
 import {Icon28NewsfeedOutline, Icon28ServicesOutline} from "@vkontakte/icons";
@@ -39,13 +36,14 @@ export const games = [
 
 const App = () => {
     const [activeStory, setActiveStory] = useState('matches');
-    const [activeView, setActiveView] = useState('tournaments');
+    const [activeView, setActiveView] = useState('matches');
     const [activePanel, setActivePanel] = useState('matches');
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
     const [match, setMatch] = useState(null);
     const [date, setDate] = useState(null);
     const [chosen, setChosen] = useState(null);
+    const [popout, setPopout] = useState(null);
 
     useEffect(() => {
         bridge.subscribe(({detail: {type, data}}) => {
@@ -75,7 +73,7 @@ const App = () => {
         setActivePanel(e.currentTarget.dataset.story);
     };
 
-    const value = {panel: activePanel, story: activeStory, view: activeView, go, setGame, game, match, setMatch, date, setDate, chosen, setChosen};
+    const value = {panel: activePanel, story: activeStory, view: activeView, go, setPopout, setGame, game, match, setMatch, date, setDate, chosen, setChosen};
 
     return (
         <RouterContext.Provider value={value}>
@@ -95,7 +93,7 @@ const App = () => {
                     ><Icon28ServicesOutline/></TabbarItem>
                 </Tabbar>
             }>
-                <View id="matches" activePanel={activePanel}>
+                <View id="matches" activePanel={activePanel} popout={popout}>
                     <Matches id="matches" />
                     <Match id='match'/>
                     <GamesFilter id="gamesFilter" />

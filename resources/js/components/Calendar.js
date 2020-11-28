@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import HorizontalCalendar from "../vendor/HorizontalCalendar";
-import DateTime from 'luxon/src/datetime.js';
-import {RouterContext} from '../App';
+import { DateTime } from 'luxon';
+import { RouterContext } from '../App';
 
 const calculateFilterDate = day => {
     const middleWeek = 4;
-    const dt = DateTime.local().set({hour: 0, minute: 0, second: 0, millisecond: 0});
+    const dt = DateTime.local().toUTC().set({hour: 0, minute: 0, second: 0, millisecond: 0});
     if(day === middleWeek){
         return dt.toSeconds();
     }
