@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {Panel, PanelHeader, ScreenSpinner} from '@vkontakte/vkui';
-import {RouterContext} from '../../App'
+import {RouterContext, domain} from '../../App'
 
 import { get } from '../../api';
 import TournamentItem from "../../components/tournaments/TournamentItem";
@@ -11,7 +11,7 @@ const Tournaments = ({ id }) => {
 
     useEffect(() => {
         setPopout(<ScreenSpinner/>);
-        get('api/v1/tournaments').then(({data}) => {
+        get(`${domain}/api/v1/tournaments`).then(({data}) => {
             setPopout(null);
             setTournaments(data)
         }).catch((err) => {

@@ -32,6 +32,8 @@ export const games = [
     {id: 5, value: 'CS:GO', icon: "https://img.abiosgaming.com/games/flat-rectangular-cs-go-logo.jpg"}
 ];
 
+export const domain = 'https://vk-cyber.volkv.com';
+
 const App = () => {
     const [activeStory, setActiveStory] = useState('tournaments');
     const [activeView, setActiveView] = useState('tournaments');

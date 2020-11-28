@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {Panel, PanelHeader, SelectMimicry, ScreenSpinner} from '@vkontakte/vkui';
-import {RouterContext, games} from '../App'
+import {RouterContext, games, domain} from '../App'
 import Calendar from '../components/Calendar';
 
 import MatchItem from "../components/MatchItem";
@@ -25,7 +25,7 @@ const Matches = ({ id }) => {
             params.starts_after = date;
         }
         const urlParams = `${new URLSearchParams(params)}`;
-        const url = urlParams ? `https://vk-cyber.volkv.com/api/v1/series?${urlParams}`: `api/v1/series`;
+        const url = urlParams ? `${domain}/api/v1/series?${urlParams}`: `api/v1/series`;
         setPopout(<ScreenSpinner/>);
         get(url).then(data => {
             setMatches(data.data);
