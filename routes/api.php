@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/v1/series', 'AbiosApiController@seriesList');
+Route::get('/v1/series/{id}', 'AbiosApiController@seriesSingle');
