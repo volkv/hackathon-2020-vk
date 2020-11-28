@@ -34,6 +34,7 @@ class AbiosApiController extends Controller
         ]);
 
         $payload = [];
+        $payload['is_postponed'] = 'false';
         $payload['games'] = [1,2,5];
 
         if ($request->game) {
@@ -45,7 +46,38 @@ class AbiosApiController extends Controller
         $payload['starts_before'] = $this->api->formatDate($request->starts_before ?? now()->endOfDay()->timestamp);
 
 
-      //  $payload['with'] = ['tournament'];
+        $payload['with'] = ['casters'];
+
+        $cacheKey = md5($endpoint.serialize($payload));
+
+        return Cache::remember($cacheKey, 1000, fn() => $this->api->request($endpoint, $payload));
+
+    }
+
+    public function tournamentsList(Request $request)
+    {
+
+        $endpoint = 'tournaments';
+
+        $this->validate($request, [
+            'game' => 'int|in:1,2,5',
+            'page' => 'int',
+            'starts_after' => 'int',
+        ]);
+
+        $payload = [];
+        $payload['games'] = [1,2,5];
+        $payload['tiers'] = [1];
+
+        if ($request->game) {
+            $payload['games'] = [$request->game];
+        }
+
+        $payload['page'] = $request->page ?? 1;
+        $payload['starts_after'] = $this->api->formatDate($request->starts_after ?? now()->startOfDay()->timestamp);
+
+
+        $payload['with'] = ['casters'];
 
         $cacheKey = md5($endpoint.serialize($payload));
 

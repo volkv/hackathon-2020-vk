@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../css/logo.css'
-
 const TeamLogo = ({background, width, height}) => {
     const logoStyle = {
         width: width ? width : "45px",

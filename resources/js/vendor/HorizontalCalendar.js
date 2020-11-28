@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {getClassName, Headline, HorizontalScroll, usePlatform} from "@vkontakte/vkui";
 
-import "@vkontakte/vkui/dist/vkui.css";
-
 
 const HorizontalCalendar = ({
                                 date = new Date(),
