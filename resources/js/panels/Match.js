@@ -15,7 +15,7 @@ const Match = ({id}) => {
     const {go, match} = useContext(RouterContext);
 
     useEffect(() => {
-        const url = `api/v1/series/${match}`;
+        const url = `https://vk-cyber.volkv.com/api/v1/series/${match}`;
         get(url).then(data => {
             setCurrentMatch(data)
         }).catch((err) => {

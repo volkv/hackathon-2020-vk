@@ -25,7 +25,7 @@ const Matches = ({ id }) => {
             params.starts_after = date;
         }
         const urlParams = `${new URLSearchParams(params)}`;
-        const url = urlParams ? `api/v1/series?${urlParams}`: `api/v1/series`;
+        const url = urlParams ? `https://vk-cyber.volkv.com/api/v1/series?${urlParams}`: `api/v1/series`;
         setPopout(<ScreenSpinner/>);
         get(url).then(data => {
             setMatches(data.data);
