@@ -35,9 +35,9 @@ export const games = [
 export const domain = 'https://vk-cyber.volkv.com';
 
 const App = () => {
-    const [activeStory, setActiveStory] = useState('tournaments');
-    const [activeView, setActiveView] = useState('tournaments');
-    const [activePanel, setActivePanel] = useState('tournaments');
+    const [activeStory, setActiveStory] = useState('matches');
+    const [activeView, setActiveView] = useState('matches');
+    const [activePanel, setActivePanel] = useState('matches');
     const [game, setGame] = useState(null);
     const [fetchedUser, setUser] = useState(null);
     const [match, setMatch] = useState(null);
