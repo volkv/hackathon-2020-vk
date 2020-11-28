@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Div} from "@vkontakte/vkui";
 import {RouterContext} from '../../App';
 
-import '../../../css/tournament.css'
 import TeamLogo from "../TeamLogo";
 
 const TournamentItem = () => {
